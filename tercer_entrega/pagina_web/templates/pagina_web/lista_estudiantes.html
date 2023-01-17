@@ -1,0 +1,23 @@
+{% extends "pagina_web/base.html" %}
+
+{% block subtitulo %}Lista de Estudiantes{% endblock subtitulo %}
+
+{% block contenido %}
+<h1>Lista de estudiantes</h1>
+<a href="{% url 'crear_estudiantes'%}">Añadir</a>
+
+<br>       
+<form action="{% url 'buscar_estudiantes' %}" method="post">
+    {% csrf_token %}
+    <p>Nombe del estudiante:</p>
+    <input type="text" name="nombre">
+    <input type="submit" value="Buscar">
+</form> 
+<br>
+
+<ul>
+    {% for student in estudiantes %}
+    <li>{{ student.apellido }}, {{ student.nombre }}</li>
+    {% endfor %}
+</ul>
+{% endblock contenido %}

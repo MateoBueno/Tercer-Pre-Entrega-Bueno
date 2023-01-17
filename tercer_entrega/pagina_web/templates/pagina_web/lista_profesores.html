@@ -1,0 +1,23 @@
+{% extends "pagina_web/base.html" %}
+
+{% block subtitulo %}Lista de Profesores{% endblock subtitulo %}
+
+{% block contenido %}
+<h1>Lista de profesores</h1>
+<a href="{% url 'crear_profesores'%}">Añadir</a>
+
+<br>       
+<form action="{% url 'buscar_profesores' %}" method="post">
+    {% csrf_token %}
+    <p>Nombe del profesor:</p>
+    <input type="text" name="nombre">
+    <input type="submit" value="Buscar">
+</form> 
+<br>
+
+<ul>
+{% for profesor in profesores %}
+    <li>{{ profesor.apellido }}, {{ profesor.nombre }}</li>
+{% endfor %}
+</ul>
+{% endblock contenido %}

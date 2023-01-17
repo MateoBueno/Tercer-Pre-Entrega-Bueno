@@ -1,0 +1,23 @@
+{% extends "pagina_web/base.html" %}
+
+{% block subtitulo %}Lista de Cursos{% endblock subtitulo %}
+
+{% block contenido %}
+<h1>Lista de cursos</h1>
+<a href="{% url 'crear_cursos'%}">Añadir</a>
+
+<br>       
+<form action="{% url 'buscar_cursos' %}" method="post">
+    {% csrf_token %}
+    <p>Nombe del curso:</p>
+    <input type="text" name="nombre">
+    <input type="submit" value="Buscar">
+</form> 
+<br>
+
+<ul>
+{% for cursos in curso %}
+    <li>{{ cursos.nombre }}, {{ cursos.comision }}</li>
+{% endfor %}
+</ul>
+{% endblock contenido %}

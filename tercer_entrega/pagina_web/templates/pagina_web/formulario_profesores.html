@@ -1,0 +1,16 @@
+{% extends "pagina_web/base.html" %}
+
+{% block subtitulo %}Crear Profesores{% endblock subtitulo %}
+
+{% block contenido %}
+    <form action="{% url 'crear_profesores' %}" method="post">
+        {% csrf_token %}
+        <p>Nombre del profesor:</p>
+        <input type="text" name="nombre">
+        <p>Apellido:</p>
+        <input type="text" name="apellido">
+        <p>Materia::</p>
+        <input type="text" name="materia">
+        <input type="submit" name="Enviar">
+    </form>        
+{% endblock contenido %}
